@@ -9,6 +9,7 @@
 #include "board.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 
 /*********************************************************************************
  * Defines
@@ -21,30 +22,7 @@
 #define ACQ_WINDOW_END          20
 #define NUM_WINDOWS             (ACQ_WINDOW_END - ACQ_WINDOW_START + 1)
 
-/*---------------------------- Channel layout ---------------------------------
- *
- *  ADC0 (ADCA)  myADC0_BASE / myADC0_RESULT_BASE  - 3 interrupt-driven channels
- *    ch[0] = SOC0  -> ADCIN0   INT1   EPWM1_SOCA
- *    ch[1] = SOC1  -> ADCIN2   INT2   EPWM1_SOCB
- *    ch[2] = SOC2  -> ADCIN4   INT3   EPWM2_SOCA
- *
- *  ADC1 (ADCB)  myADC1_BASE / myADC1_RESULT_BASE  - 3 interrupt-driven channels
- *    ch[0] = SOC3  -> ADCIN0   INT1   EPWM2_SOCB
- *    ch[1] = SOC8  -> ADCIN2   INT2   EPWM5_SOCA
- *    ch[2] = SOC9  -> ADCIN4   INT3   EPWM5_SOCB
- *
- *  ADC2 (ADCC)  myADC2_BASE / myADC2_RESULT_BASE  - 2 interrupt-driven channels
- *    ch[0] = SOC10 -> ADCIN2   INT1   EPWM6_SOCA
- *    ch[1] = SOC11 -> ADCIN4   INT2   EPWM6_SOCB
- *
- *  ADC3 (ADCD)  myADC3_BASE / myADC3_RESULT_BASE  - 4 interrupt-driven channels
- *    ch[0] = SOC4  -> ADCIN0   INT1   EPWM3_SOCA
- *    ch[1] = SOC5  -> ADCIN1   INT2   EPWM3_SOCB
- *    ch[2] = SOC6  -> ADCIN2   INT3   EPWM4_SOCA
- *    ch[3] = SOC7  -> ADCIN3   INT4   EPWM4_SOCB
- *
- *  Total: 12 channels
- *----------------------------------------------------------------------------*/
+
 #define ADC0_NUM_CH     3
 #define ADC1_NUM_CH     3
 #define ADC2_NUM_CH     2
