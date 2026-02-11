@@ -9,7 +9,7 @@
 #include "board.h"
 #include <stdio.h>
 #include <string.h>
-#include <stdbool.h>
+#include <stdbool.h>  /* Added for bool type */
 
 /*********************************************************************************
  * Defines
@@ -21,6 +21,8 @@
 #define ACQ_WINDOW_START        1
 #define ACQ_WINDOW_END          20
 #define NUM_WINDOWS             (ACQ_WINDOW_END - ACQ_WINDOW_START + 1)
+
+#define TIMEOUT_CYCLES          1000000  /* Timeout for ADC completion */
 
 
 #define ADC0_NUM_CH     3
@@ -39,6 +41,35 @@ typedef struct {
     uint16_t range;
     float    stdDev;
 } WindowStats;
+
+/*********************************************************************************
+ * Atomic Helper Macros for TI C2000
+ *********************************************************************************/
+#define ATOMIC_READ(var, dest) \
+    do { \
+        uint16_t __int_state = __disable_interrupts(); \
+        (dest) = (var); \
+        __restore_interrupts(__int_state); \
+    } while(0)
+
+#define ATOMIC_WRITE(var, value) \
+    do { \
+        uint16_t __int_state = __disable_interrupts(); \
+        (var) = (value); \
+        __restore_interrupts(__int_state); \
+    } while(0)
+
+#define ATOMIC_COMPARE_AND_SWAP(var, expected, newval, result) \
+    do { \
+        uint16_t __int_state = __disable_interrupts(); \
+        if ((var) == (expected)) { \
+            (var) = (newval); \
+            (result) = true; \
+        } else { \
+            (result) = false; \
+        } \
+        __restore_interrupts(__int_state); \
+    } while(0)
 
 /*********************************************************************************
  * Extern Variable Declarations

@@ -1,4 +1,4 @@
-"./COMPARE.obj"
+"./Zero_001.obj"
 "./syscfg/board.obj"
 "./syscfg/device.obj"
 "./syscfg/c2000ware_libraries.obj"

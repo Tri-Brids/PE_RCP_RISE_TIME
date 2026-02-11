@@ -18,7 +18,7 @@ ASM_SRCS += \
 C:/ti/C2000Ware_6_00_01_00/device_support/f2837xd/common/source/f2837xd_codestartbranch.asm 
 
 C_SRCS += \
-../COMPARE.c \
+../Zero_001.c \
 ./syscfg/board.c \
 ./syscfg/device.c \
 ./syscfg/c2000ware_libraries.c 
@@ -34,7 +34,7 @@ GEN_MISC_DIRS += \
 ./syscfg 
 
 C_DEPS += \
-./COMPARE.d \
+./Zero_001.d \
 ./syscfg/board.d \
 ./syscfg/device.d \
 ./syscfg/c2000ware_libraries.d 
@@ -44,7 +44,7 @@ GEN_OPTS += \
 ./syscfg/c2000ware_libraries.opt 
 
 OBJS += \
-./COMPARE.obj \
+./Zero_001.obj \
 ./syscfg/board.obj \
 ./syscfg/device.obj \
 ./syscfg/c2000ware_libraries.obj \
@@ -69,7 +69,7 @@ GEN_MISC_DIRS__QUOTED += \
 "syscfg" 
 
 OBJS__QUOTED += \
-"COMPARE.obj" \
+"Zero_001.obj" \
 "syscfg\board.obj" \
 "syscfg\device.obj" \
 "syscfg\c2000ware_libraries.obj" \
@@ -88,7 +88,7 @@ GEN_MISC_FILES__QUOTED += \
 "syscfg\clocktree.h" 
 
 C_DEPS__QUOTED += \
-"COMPARE.d" \
+"Zero_001.d" \
 "syscfg\board.d" \
 "syscfg\device.d" \
 "syscfg\c2000ware_libraries.d" 
@@ -104,7 +104,7 @@ ASM_DEPS__QUOTED += \
 "f2837xd_codestartbranch.d" 
 
 C_SRCS__QUOTED += \
-"../COMPARE.c" \
+"../Zero_001.c" \
 "./syscfg/board.c" \
 "./syscfg/device.c" \
 "./syscfg/c2000ware_libraries.c" 

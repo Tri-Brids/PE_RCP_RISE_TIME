@@ -1,7 +1,7 @@
 ******************************************************************************
              TMS320C2000 Linker PC v22.6.3                     
 ******************************************************************************
->> Linked Wed Feb 11 17:57:14 2026
+>> Linked Wed Feb 11 18:41:21 2026
 
 OUTPUT FILE NAME:   <lab_ePWM_eCAP_controlcard.out>
 ENTRY POINT SYMBOL: "code_start"  address: 00080000
@@ -85,45 +85,45 @@ codestart
 *          0    00082000    00000000     UNINITIALIZED
 
 .bss       1    0000c000    00000cb8     UNINITIALIZED
-                  0000c000    00000280     COMPARE.obj (.bss:adc3WindowResults)
-                  0000c280    000001e0     COMPARE.obj (.bss:adc0WindowResults)
-                  0000c460    000001e0     COMPARE.obj (.bss:adc1WindowResults)
-                  0000c640    00000140     COMPARE.obj (.bss:adc2WindowResults)
-                  0000c780    00000140     COMPARE.obj (.bss:adc3TestResults)
-                  0000c8c0    00000100     COMPARE.obj (.bss:uartBuffer)
-                  0000c9c0    000000f0     COMPARE.obj (.bss:adc0TestResults)
-                  0000cab0    000000f0     COMPARE.obj (.bss:adc1TestResults)
-                  0000cba0    000000a0     COMPARE.obj (.bss:adc2TestResults)
-                  0000cc40    00000028     COMPARE.obj (.bss:adc3Results)
-                  0000cc68    0000001e     COMPARE.obj (.bss:adc0Results)
-                  0000cc86    0000001e     COMPARE.obj (.bss:adc1Results)
-                  0000cca4    00000014     COMPARE.obj (.bss:adc2Results)
+                  0000c000    00000280     Zero_001.obj (.bss:adc3WindowResults)
+                  0000c280    000001e0     Zero_001.obj (.bss:adc0WindowResults)
+                  0000c460    000001e0     Zero_001.obj (.bss:adc1WindowResults)
+                  0000c640    00000140     Zero_001.obj (.bss:adc2WindowResults)
+                  0000c780    00000140     Zero_001.obj (.bss:adc3TestResults)
+                  0000c8c0    00000100     Zero_001.obj (.bss:uartBuffer)
+                  0000c9c0    000000f0     Zero_001.obj (.bss:adc0TestResults)
+                  0000cab0    000000f0     Zero_001.obj (.bss:adc1TestResults)
+                  0000cba0    000000a0     Zero_001.obj (.bss:adc2TestResults)
+                  0000cc40    00000028     Zero_001.obj (.bss:adc3Results)
+                  0000cc68    0000001e     Zero_001.obj (.bss:adc0Results)
+                  0000cc86    0000001e     Zero_001.obj (.bss:adc1Results)
+                  0000cca4    00000014     Zero_001.obj (.bss:adc2Results)
 
 .data      1    0000a800    00000048     UNINITIALIZED
-                  0000a800    00000008     COMPARE.obj (.data:adc3Errors$4)
-                  0000a808    00000006     COMPARE.obj (.data:adc0Errors$1)
-                  0000a80e    00000006     COMPARE.obj (.data:adc1Errors$2)
+                  0000a800    00000008     Zero_001.obj (.data:adc3Errors$4)
+                  0000a808    00000006     Zero_001.obj (.data:adc0Errors$1)
+                  0000a80e    00000006     Zero_001.obj (.data:adc1Errors$2)
                   0000a814    00000006     rts2800_fpu32_eabi.lib : exit.c.obj (.data)
-                  0000a81a    00000004     COMPARE.obj (.data:adc2Errors$3)
-                  0000a81e    00000004     COMPARE.obj (.data:adc3Complete)
-                  0000a822    00000004     COMPARE.obj (.data:adc3Index)
-                  0000a826    00000004     COMPARE.obj (.data:adc3SampleCount)
-                  0000a82a    00000003     COMPARE.obj (.data:adc0Complete)
-                  0000a82d    00000003     COMPARE.obj (.data:adc0Index)
-                  0000a830    00000003     COMPARE.obj (.data:adc0SampleCount)
-                  0000a833    00000003     COMPARE.obj (.data:adc1Complete)
-                  0000a836    00000003     COMPARE.obj (.data:adc1Index)
-                  0000a839    00000003     COMPARE.obj (.data:adc1SampleCount)
+                  0000a81a    00000004     Zero_001.obj (.data:adc2Errors$3)
+                  0000a81e    00000004     Zero_001.obj (.data:adc3Complete)
+                  0000a822    00000004     Zero_001.obj (.data:adc3Index)
+                  0000a826    00000004     Zero_001.obj (.data:adc3SampleCount)
+                  0000a82a    00000003     Zero_001.obj (.data:adc0Complete)
+                  0000a82d    00000003     Zero_001.obj (.data:adc0Index)
+                  0000a830    00000003     Zero_001.obj (.data:adc0SampleCount)
+                  0000a833    00000003     Zero_001.obj (.data:adc1Complete)
+                  0000a836    00000003     Zero_001.obj (.data:adc1Index)
+                  0000a839    00000003     Zero_001.obj (.data:adc1SampleCount)
                   0000a83c    00000002     rts2800_fpu32_eabi.lib : _lock.c.obj (.data:_lock)
                   0000a83e    00000002                            : _lock.c.obj (.data:_unlock)
-                  0000a840    00000002     COMPARE.obj (.data:adc2Complete)
-                  0000a842    00000002     COMPARE.obj (.data:adc2Index)
-                  0000a844    00000002     COMPARE.obj (.data:adc2SampleCount)
-                  0000a846    00000001     COMPARE.obj (.data)
+                  0000a840    00000002     Zero_001.obj (.data:adc2Complete)
+                  0000a842    00000002     Zero_001.obj (.data:adc2Index)
+                  0000a844    00000002     Zero_001.obj (.data:adc2SampleCount)
+                  0000a846    00000001     Zero_001.obj (.data)
                   0000a847    00000001     rts2800_fpu32_eabi.lib : errno.c.obj (.data)
 
 .const     0    00090000    00000c5c     
-                  00090000    000006a0     COMPARE.obj (.const:.string)
+                  00090000    000006a0     Zero_001.obj (.const:.string)
                   000906a0    00000101     rts2800_fpu32_eabi.lib : ctype.c.obj (.const:.string:_ctypes_)
                   000907a1    00000001     --HOLE-- [fill = 0]
                   000907a2    000000fa     board.obj (.const:.string)
@@ -165,7 +165,7 @@ PUTREADIDX
 
 .text.1    0    00082000    00002000     
                   00082000    000014c1     board.obj (.text)
-                  000834c1    00000992     COMPARE.obj (.text)
+                  000834c1    00000992     Zero_001.obj (.text)
                   00083e53    00000107     rts2800_fpu32_eabi.lib : ll_div28.asm.obj (.text)
                   00083f5a    0000009c                            : fd_add28.asm.obj (.text)
                   00083ff6    0000000a     driverlib_eabi.lib : interrupt.obj (.text:Interrupt_illegalOperationHandler)
@@ -174,7 +174,7 @@ PUTREADIDX
                   00084000    000006c2     rts2800_fpu32_eabi.lib : _printfi.c.obj (.text)
                   000846c2    00000614                            : _printfi.c.obj (.text:__TI_printfi)
                   00084cd6    00000459     device.obj (.text)
-                  0008512f    0000044c     COMPARE.obj (.text:retain)
+                  0008512f    0000044c     Zero_001.obj (.text:retain)
                   0008557b    00000209     driverlib_eabi.lib : sysctl.obj (.text:SysCtl_setClock)
                   00085784    000000a9     rts2800_fpu32_eabi.lib : s_scalbn.c.obj (.text)
                   0008582d    00000090     driverlib_eabi.lib : sysctl.obj (.text:SysCtl_selectXTAL)
@@ -268,7 +268,7 @@ MODULE SUMMARY
        Module                        code    ro data   rw data
        ------                        ----    -------   -------
     .\
-       COMPARE.obj                   3550    1696      3317   
+       Zero_001.obj                  3550    1696      3317   
        f2837xd_codestartbranch.obj   10      0         0      
     +--+-----------------------------+-------+---------+---------+
        Total:                        3560    1696      3317   
