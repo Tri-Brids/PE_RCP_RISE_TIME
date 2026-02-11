@@ -1,0 +1,52 @@
+{
+    "interruptInfo" : [
+        {
+            "interruptName": "INT_myADC0_1",
+            "interruptHandler": "INT_myADC0_1_ISR"
+        },
+        {
+            "interruptName": "INT_myADC0_2",
+            "interruptHandler": "INT_myADC0_2_ISR"
+        },
+        {
+            "interruptName": "INT_myADC0_3",
+            "interruptHandler": "INT_myADC0_3_ISR"
+        },
+        {
+            "interruptName": "INT_myADC1_1",
+            "interruptHandler": "INT_myADC1_1_ISR"
+        },
+        {
+            "interruptName": "INT_myADC1_2",
+            "interruptHandler": "INT_myADC1_2_ISR"
+        },
+        {
+            "interruptName": "INT_myADC1_3",
+            "interruptHandler": "INT_myADC1_3_ISR"
+        },
+        {
+            "interruptName": "INT_myADC2_1",
+            "interruptHandler": "INT_myADC2_1_ISR"
+        },
+        {
+            "interruptName": "INT_myADC2_2",
+            "interruptHandler": "INT_myADC2_2_ISR"
+        },
+        {
+            "interruptName": "INT_myADC3_1",
+            "interruptHandler": "INT_myADC3_1_ISR"
+        },
+        {
+            "interruptName": "INT_myADC3_2",
+            "interruptHandler": "INT_myADC3_2_ISR"
+        },
+        {
+            "interruptName": "INT_myADC3_3",
+            "interruptHandler": "INT_myADC3_3_ISR"
+        },
+        {
+            "interruptName": "INT_myADC3_4",
+            "interruptHandler": "INT_myADC3_4_ISR"
+        }
+    ]
+}

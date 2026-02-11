@@ -1,0 +1,8 @@
+"./COMPARE.obj"
+"./syscfg/board.obj"
+"./syscfg/device.obj"
+"./syscfg/c2000ware_libraries.obj"
+"./f2837xd_codestartbranch.obj"
+"../2837xD_FLASH_lnk_cpu1.cmd"
+"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/ccs/Debug/driverlib.lib"
+-llibc.a

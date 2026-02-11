@@ -1,0 +1,147 @@
+/**
+ * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
+ * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
+ * @cliArgs --board "/boards/TMDSCNCD28379D" --device "F2837xD" --part "F2837xD_337ZWT" --package "F2837xD_337ZWT" --context "CPU1" --product "C2000WARE@6.00.01.00"
+ * @v2CliArgs --board "/boards/TMDSCNCD28379D" --device "TMS320F28379D" --package "337ZWT" --context "CPU1" --product "C2000WARE@6.00.01.00"
+ * @versions {"tool":"1.26.0+4407"}
+ */
+
+/**
+ * Import the modules used in this configuration.
+ */
+const adc            = scripting.addModule("/driverlib/adc.js", {}, false);
+const adc1           = adc.addInstance();
+const led            = scripting.addModule("/driverlib/board_components/led", {}, false);
+const led1           = led.addInstance();
+const device_support = scripting.addModule("/driverlib/device_support.js");
+const epwm           = scripting.addModule("/driverlib/epwm.js", {}, false);
+const epwm1          = epwm.addInstance();
+const epwm2          = epwm.addInstance();
+const inputxbar      = scripting.addModule("/driverlib/inputxbar.js", {}, false);
+const inputxbar1     = inputxbar.addInstance();
+const sci            = scripting.addModule("/driverlib/sci.js", {}, false);
+const sci1           = sci.addInstance();
+
+/**
+ * Write custom configuration values to the imported modules.
+ */
+adc1.$name                   = "myADC0";
+adc1.adcClockPrescaler       = "ADC_CLK_DIV_4_0";
+adc1.enableInterrupt1        = true;
+adc1.interruptPulseMode      = "ADC_PULSE_END_OF_CONV";
+adc1.socHighPriorityMode     = "ADC_PRI_ALL_HIPRI";
+adc1.soc3SampleWindow        = 15;
+adc1.soc4SampleWindow        = 15;
+adc1.soc5SampleWindow        = 15;
+adc1.soc6SampleWindow        = 15;
+adc1.soc7SampleWindow        = 15;
+adc1.soc8SampleWindow        = 15;
+adc1.soc9SampleWindow        = 15;
+adc1.soc10SampleWindow       = 15;
+adc1.soc11SampleWindow       = 15;
+adc1.soc12SampleWindow       = 15;
+adc1.soc13SampleWindow       = 15;
+adc1.soc14SampleWindow       = 15;
+adc1.soc15SampleWindow       = 15;
+adc1.soc0Trigger             = "ADC_TRIGGER_EPWM1_SOCA";
+adc1.soc1Trigger             = "ADC_TRIGGER_EPWM1_SOCB";
+adc1.soc1Channel             = "ADC_CH_ADCIN1";
+adc1.interrupt2SOCSource     = "ADC_SOC_NUMBER1";
+adc1.enableInterrupt2        = true;
+adc1.enabledSOCs             = ["ADC_SOC_NUMBER0","ADC_SOC_NUMBER1","ADC_SOC_NUMBER2"];
+adc1.soc2Channel             = "ADC_CH_ADCIN4";
+adc1.soc2Trigger             = "ADC_TRIGGER_EPWM2_SOCA";
+adc1.enabledInts             = ["ADC_INT_NUMBER1","ADC_INT_NUMBER2","ADC_INT_NUMBER3"];
+adc1.interrupt3SOCSource     = "ADC_SOC_NUMBER2";
+adc1.enableInterrupt3        = true;
+adc1.registerInterrupts      = ["1","2","3"];
+adc1.adcInt1.enableInterrupt = true;
+adc1.adcInt2.enableInterrupt = true;
+adc1.adcInt3.enableInterrupt = true;
+scripting.suppress("SOC0 sample window must be at least 15", adc1, "soc0SampleWindow");
+scripting.suppress("SOC1 sample window must be at least 15", adc1, "soc1SampleWindow");
+scripting.suppress("SOC2 sample window must be at least 15", adc1, "soc2SampleWindow");
+
+led1.$name                = "myBoardLED0";
+led1.$hardware            = system.deviceData.board.components.D2;
+led1.gpio.gpioPin.$assign = "hsecDigital.86";
+
+const divider3 = system.clockTree["EPWMCLKDIV"];
+scripting.suppress("ePWM TZFRC and TZCLR events will sometimes be missed when EPWMCLKDIV is divide by 2\\. Always program EPWMCLKDIV to divide by 1 if using TZFRC or TZCLR register\\. Please refer to the F2837xD Silicon Errata for more details\\.", divider3, "EPWMCLK");
+
+const multiplier4         = system.clockTree["PLL_IMULT"];
+multiplier4.multiplyValue = 20;
+
+const pinFunction3     = system.clockTree["XTAL"];
+pinFunction3.XTAL_Freq = 20;
+
+epwm1.$name                                                      = "myEPWM0";
+epwm1.epwmTimebase_counterMode                                   = "EPWM_COUNTER_MODE_UP_DOWN";
+epwm1.epwmTimebase_period                                        = 25000;
+epwm1.epwmActionQualifier_EPWM_AQ_OUTPUT_A_shadowMode            = true;
+epwm1.epwmActionQualifier_EPWM_AQ_OUTPUT_A_ON_TIMEBASE_UP_CMPA   = "EPWM_AQ_OUTPUT_HIGH";
+epwm1.epwmActionQualifier_EPWM_AQ_OUTPUT_A_ON_TIMEBASE_DOWN_CMPA = "EPWM_AQ_OUTPUT_LOW";
+epwm1.epwmActionQualifier_EPWM_AQ_OUTPUT_B_shadowMode            = true;
+epwm1.epwmEventTrigger_EPWM_SOC_B_triggerEnable                  = true;
+epwm1.epwmEventTrigger_EPWM_SOC_A_triggerEnable                  = true;
+epwm1.epwmEventTrigger_EPWM_SOC_A_triggerEventCountInitEnable    = true;
+epwm1.epwmEventTrigger_EPWM_SOC_B_triggerEventCountInitEnable    = true;
+epwm1.epwmEventTrigger_EPWM_SOC_A_triggerEventCountInitForce     = true;
+epwm1.epwmEventTrigger_EPWM_SOC_B_triggerEventCountInitForce     = true;
+epwm1.epwmEventTrigger_EPWM_SOC_A_triggerSource                  = "EPWM_SOC_TBCTR_U_CMPA";
+epwm1.epwmEventTrigger_EPWM_SOC_B_triggerSource                  = "EPWM_SOC_TBCTR_U_CMPB";
+epwm1.epwmActionQualifier_EPWM_AQ_OUTPUT_B_ON_TIMEBASE_UP_CMPB   = "EPWM_AQ_OUTPUT_HIGH";
+epwm1.epwmActionQualifier_EPWM_AQ_OUTPUT_B_ON_TIMEBASE_DOWN_CMPB = "EPWM_AQ_OUTPUT_LOW";
+epwm1.epwmCounterCompare_cmpA                                    = 12500;
+epwm1.epwmCounterCompare_cmpB                                    = 12500;
+epwm1.$hardware                                                  = system.deviceData.board.components.PWM_LOC1;
+
+epwm2.$name                                                      = "myEPWM1";
+epwm2.epwmTimebase_counterMode                                   = "EPWM_COUNTER_MODE_UP_DOWN";
+epwm2.epwmTimebase_period                                        = 25000;
+epwm2.epwmActionQualifier_EPWM_AQ_OUTPUT_A_shadowMode            = true;
+epwm2.epwmActionQualifier_EPWM_AQ_OUTPUT_A_ON_TIMEBASE_UP_CMPA   = "EPWM_AQ_OUTPUT_HIGH";
+epwm2.epwmActionQualifier_EPWM_AQ_OUTPUT_A_ON_TIMEBASE_DOWN_CMPA = "EPWM_AQ_OUTPUT_LOW";
+epwm2.epwmActionQualifier_EPWM_AQ_OUTPUT_B_shadowMode            = true;
+epwm2.epwmEventTrigger_EPWM_SOC_B_triggerEnable                  = true;
+epwm2.epwmEventTrigger_EPWM_SOC_A_triggerEnable                  = true;
+epwm2.epwmEventTrigger_EPWM_SOC_A_triggerEventCountInitEnable    = true;
+epwm2.epwmEventTrigger_EPWM_SOC_B_triggerEventCountInitEnable    = true;
+epwm2.epwmEventTrigger_EPWM_SOC_A_triggerEventCountInitForce     = true;
+epwm2.epwmEventTrigger_EPWM_SOC_B_triggerEventCountInitForce     = true;
+epwm2.epwmEventTrigger_EPWM_SOC_A_triggerSource                  = "EPWM_SOC_TBCTR_U_CMPA";
+epwm2.epwmEventTrigger_EPWM_SOC_B_triggerSource                  = "EPWM_SOC_TBCTR_U_CMPB";
+epwm2.epwmActionQualifier_EPWM_AQ_OUTPUT_B_ON_TIMEBASE_UP_CMPB   = "EPWM_AQ_OUTPUT_HIGH";
+epwm2.epwmActionQualifier_EPWM_AQ_OUTPUT_B_ON_TIMEBASE_DOWN_CMPB = "EPWM_AQ_OUTPUT_LOW";
+epwm2.epwmCounterCompare_cmpB                                    = 12500;
+epwm2.$hardware                                                  = system.deviceData.board.components.PWM_LOC2;
+epwm2.copyUse                                                    = true;
+epwm2.copyFrom                                                   = "myEPWM0";
+scripting.suppress("It is recommended to use a non-zero counter compare value when using shadow to active load of action qualifier A/B control register on TBCTR=0 boundary", epwm2, "epwmCounterCompare_cmpB");
+scripting.suppress("It is recommended to use a non-zero counter compare value when using shadow to active load of action qualifier A/B control register on TBCTR=0 boundary", epwm2, "epwmCounterCompare_cmpB");
+scripting.suppress("It is recommended to use a non-zero counter compare value when using shadow to active load of action qualifier A/B control register on TBCTR=0 boundary", epwm2, "epwmCounterCompare_cmpA");
+scripting.suppress("It is recommended to use a non-zero counter compare value when using shadow to active load of action qualifier A/B control register on TBCTR=0 boundary", epwm2, "epwmCounterCompare_cmpA");
+
+inputxbar1.$name = "myINPUTXBAR0";
+
+sci1.$name                 = "mySCI0";
+sci1.enabledFIFOInterrupts = ["SCI_INT_RXFF","SCI_INT_TXFF"];
+sci1.sci.$assign           = "SCIA";
+sci1.sci.scirxdPin.$assign = "hsecDigital.76";
+sci1.sci.scitxdPin.$assign = "hsecDigital.78";
+sci1.rxQual.$name          = "myGPIOQUAL0";
+sci1.txQual.$name          = "myGPIOQUAL1";
+scripting.suppress("Connected to hardware,@@@.+?@@@ is connected to SCIA on the Control Card F28379D\\. Consider selecting it in \'use hardware\' above\\. @@@.+?@@@", sci1.sci, "scirxdPin");
+scripting.suppress("Connected to hardware,@@@.+?@@@ is connected to SCIA on the Control Card F28379D\\. Consider selecting it in \'use hardware\' above\\. @@@.+?@@@", sci1.sci, "scitxdPin");
+
+/**
+ * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
+ * version of the tool will not impact the pinmux you originally saw.  These lines can be completely deleted in order to
+ * re-solve from scratch.
+ */
+epwm1.epwm.$suggestSolution           = "EPWM1";
+epwm1.epwm.epwm_aPin.$suggestSolution = "hsecDigital.49";
+epwm1.epwm.epwm_bPin.$suggestSolution = "hsecDigital.51";
+epwm2.epwm.$suggestSolution           = "EPWM2";
+epwm2.epwm.epwm_aPin.$suggestSolution = "hsecDigital.53";
+epwm2.epwm.epwm_bPin.$suggestSolution = "hsecDigital.55";
