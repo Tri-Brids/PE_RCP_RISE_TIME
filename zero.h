@@ -43,35 +43,6 @@ typedef struct {
 } WindowStats;
 
 /*********************************************************************************
- * Atomic Helper Macros for TI C2000
- *********************************************************************************/
-#define ATOMIC_READ(var, dest) \
-    do { \
-        uint16_t __int_state = __disable_interrupts(); \
-        (dest) = (var); \
-        __restore_interrupts(__int_state); \
-    } while(0)
-
-#define ATOMIC_WRITE(var, value) \
-    do { \
-        uint16_t __int_state = __disable_interrupts(); \
-        (var) = (value); \
-        __restore_interrupts(__int_state); \
-    } while(0)
-
-#define ATOMIC_COMPARE_AND_SWAP(var, expected, newval, result) \
-    do { \
-        uint16_t __int_state = __disable_interrupts(); \
-        if ((var) == (expected)) { \
-            (var) = (newval); \
-            (result) = true; \
-        } else { \
-            (result) = false; \
-        } \
-        __restore_interrupts(__int_state); \
-    } while(0)
-
-/*********************************************************************************
  * Extern Variable Declarations
  * Single definition in Test_0_08_multi_ADC.c
  *********************************************************************************/
