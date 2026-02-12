@@ -68,11 +68,12 @@ epwm1.epwmTimebase_period                                        = 25000;
 epwm1.epwmActionQualifier_EPWM_AQ_OUTPUT_A_shadowMode            = true;
 epwm1.epwmActionQualifier_EPWM_AQ_OUTPUT_A_ON_TIMEBASE_UP_CMPA   = "EPWM_AQ_OUTPUT_HIGH";
 epwm1.epwmActionQualifier_EPWM_AQ_OUTPUT_A_ON_TIMEBASE_DOWN_CMPA = "EPWM_AQ_OUTPUT_LOW";
+epwm1.epwmTripZone_useAdvancedEPWMTripZoneActions                = true;
 epwm1.epwm.$assign                                               = "EPWM1";
 epwm1.epwm.epwm_aPin.$assign                                     = "hsecDigital.49";
 epwm1.epwm.epwm_bPin.$assign                                     = "hsecDigital.51";
-scripting.suppress("It is recommended to use a non-zero counter compare value when using shadow to active load of action qualifier A/B control register on TBCTR=0 boundary", epwm1, "epwmCounterCompare_cmpB");
 scripting.suppress("It is recommended to use a non-zero counter compare value when using shadow to active load of action qualifier A/B control register on TBCTR=0 boundary", epwm1, "epwmCounterCompare_cmpA");
+scripting.suppress("It is recommended to use a non-zero counter compare value when using shadow to active load of action qualifier A/B control register on TBCTR=0 boundary", epwm1, "epwmCounterCompare_cmpB");
 scripting.suppress("Connected to hardware,@@@.+?@@@ is connected to EPWM1 on the Control Card F28379D\\. Consider selecting it in \'use hardware\' above\\. @@@.+?@@@", epwm1.epwm, "epwm_aPin");
 scripting.suppress("Connected to hardware,@@@.+?@@@ is connected to EPWM1 on the Control Card F28379D\\. Consider selecting it in \'use hardware\' above\\. @@@.+?@@@", epwm1.epwm, "epwm_bPin");
 

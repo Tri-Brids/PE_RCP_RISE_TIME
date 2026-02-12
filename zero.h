@@ -53,32 +53,17 @@ extern volatile uint16_t adc0Index[ADC0_NUM_CH];
 extern volatile uint16_t adc0SampleCount[ADC0_NUM_CH];
 extern volatile uint16_t adc0Complete[ADC0_NUM_CH];
 
-extern volatile uint16_t adc0Results1[ADC0_NUM_CH][RESULTS_BUFFER_SIZE];
-extern volatile uint16_t adc0Index1[ADC0_NUM_CH];
-extern volatile uint16_t adc0SampleCount1[ADC0_NUM_CH];
-extern volatile uint16_t adc0Complete1[ADC0_NUM_CH];
-
 /* ADC1 */
 extern volatile uint16_t adc1Results[ADC1_NUM_CH][RESULTS_BUFFER_SIZE];
 extern volatile uint16_t adc1Index[ADC1_NUM_CH];
 extern volatile uint16_t adc1SampleCount[ADC1_NUM_CH];
 extern volatile uint16_t adc1Complete[ADC1_NUM_CH];
 
-extern volatile uint16_t adc1Results1[ADC1_NUM_CH][RESULTS_BUFFER_SIZE];
-extern volatile uint16_t adc1Index1[ADC1_NUM_CH];
-extern volatile uint16_t adc1SampleCount1[ADC1_NUM_CH];
-extern volatile uint16_t adc1Complete1[ADC1_NUM_CH];
-
 /* ADC2 */
 extern volatile uint16_t adc2Results[ADC2_NUM_CH][RESULTS_BUFFER_SIZE];
 extern volatile uint16_t adc2Index[ADC2_NUM_CH];
 extern volatile uint16_t adc2SampleCount[ADC2_NUM_CH];
 extern volatile uint16_t adc2Complete[ADC2_NUM_CH];
-
-extern volatile uint16_t adc2Results1[ADC2_NUM_CH][RESULTS_BUFFER_SIZE];
-extern volatile uint16_t adc2Index1[ADC2_NUM_CH];
-extern volatile uint16_t adc2SampleCount1[ADC2_NUM_CH];
-extern volatile uint16_t adc2Complete1[ADC2_NUM_CH];
 
 /* ADC3 */
 extern volatile uint16_t adc3Results[ADC3_NUM_CH][RESULTS_BUFFER_SIZE];
@@ -91,20 +76,14 @@ extern volatile uint16_t systemSynced;
 
 /* Per-test stats [channel][test_index] */
 extern WindowStats adc0TestResults[ADC0_NUM_CH][TESTS_PER_WINDOW];
-extern WindowStats adc0TestResults1[ADC0_NUM_CH][TESTS_PER_WINDOW];
 extern WindowStats adc1TestResults[ADC1_NUM_CH][TESTS_PER_WINDOW];
-extern WindowStats adc1TestResults1[ADC1_NUM_CH][TESTS_PER_WINDOW];
 extern WindowStats adc2TestResults[ADC2_NUM_CH][TESTS_PER_WINDOW];
-extern WindowStats adc2TestResults1[ADC2_NUM_CH][TESTS_PER_WINDOW];
 extern WindowStats adc3TestResults[ADC3_NUM_CH][TESTS_PER_WINDOW];
 
 /* Window-averaged stats [channel][window_index] */
 extern WindowStats adc0WindowResults[ADC0_NUM_CH][NUM_WINDOWS];
-extern WindowStats adc0WindowResults1[ADC0_NUM_CH][NUM_WINDOWS];
 extern WindowStats adc1WindowResults[ADC1_NUM_CH][NUM_WINDOWS];
-extern WindowStats adc1WindowResults1[ADC1_NUM_CH][NUM_WINDOWS];
 extern WindowStats adc2WindowResults[ADC2_NUM_CH][NUM_WINDOWS];
-extern WindowStats adc2WindowResults1[ADC2_NUM_CH][NUM_WINDOWS];
 extern WindowStats adc3WindowResults[ADC3_NUM_CH][NUM_WINDOWS];
 
 /* Shared UART scratch buffer */
