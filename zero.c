@@ -14,17 +14,32 @@ volatile uint16_t adc0Index[ADC0_NUM_CH]       = {0, 0, 0};
 volatile uint16_t adc0SampleCount[ADC0_NUM_CH] = {0, 0, 0};
 volatile uint16_t adc0Complete[ADC0_NUM_CH]    = {0, 0, 0};
 
+volatile uint16_t adc0Results1[ADC0_NUM_CH][RESULTS_BUFFER_SIZE];
+volatile uint16_t adc0Index1[ADC0_NUM_CH]       = {0, 0, 0};
+volatile uint16_t adc0SampleCount1[ADC0_NUM_CH] = {0, 0, 0};
+volatile uint16_t adc0Complete1[ADC0_NUM_CH]    = {0, 0, 0};
+
 /* ADC1 */
 volatile uint16_t adc1Results[ADC1_NUM_CH][RESULTS_BUFFER_SIZE];
 volatile uint16_t adc1Index[ADC1_NUM_CH]       = {0, 0, 0};
 volatile uint16_t adc1SampleCount[ADC1_NUM_CH] = {0, 0, 0};
 volatile uint16_t adc1Complete[ADC1_NUM_CH]    = {0, 0, 0};
 
+volatile uint16_t adc1Results1[ADC1_NUM_CH][RESULTS_BUFFER_SIZE];
+volatile uint16_t adc1Index1[ADC1_NUM_CH]       = {0, 0, 0};
+volatile uint16_t adc1SampleCount1[ADC1_NUM_CH] = {0, 0, 0};
+volatile uint16_t adc1Complete1[ADC1_NUM_CH]    = {0, 0, 0};
+
 /* ADC2 */
 volatile uint16_t adc2Results[ADC2_NUM_CH][RESULTS_BUFFER_SIZE];
 volatile uint16_t adc2Index[ADC2_NUM_CH]       = {0, 0};
 volatile uint16_t adc2SampleCount[ADC2_NUM_CH] = {0, 0};
 volatile uint16_t adc2Complete[ADC2_NUM_CH]    = {0, 0};
+
+volatile uint16_t adc2Results1[ADC2_NUM_CH][RESULTS_BUFFER_SIZE];
+volatile uint16_t adc2Index1[ADC2_NUM_CH]       = {0, 0};
+volatile uint16_t adc2SampleCount1[ADC2_NUM_CH] = {0, 0};
+volatile uint16_t adc2Complete1[ADC2_NUM_CH]    = {0, 0};
 
 /* ADC3 */
 volatile uint16_t adc3Results[ADC3_NUM_CH][RESULTS_BUFFER_SIZE];
@@ -35,13 +50,19 @@ volatile uint16_t adc3Complete[ADC3_NUM_CH]    = {0, 0, 0, 0};
 volatile uint16_t systemSynced = 0;
 
 WindowStats adc0TestResults[ADC0_NUM_CH][TESTS_PER_WINDOW];
+WindowStats adc0TestResults1[ADC0_NUM_CH][TESTS_PER_WINDOW];
 WindowStats adc1TestResults[ADC1_NUM_CH][TESTS_PER_WINDOW];
+WindowStats adc1TestResults1[ADC1_NUM_CH][TESTS_PER_WINDOW];
 WindowStats adc2TestResults[ADC2_NUM_CH][TESTS_PER_WINDOW];
+WindowStats adc2TestResults1[ADC2_NUM_CH][TESTS_PER_WINDOW];
 WindowStats adc3TestResults[ADC3_NUM_CH][TESTS_PER_WINDOW];
 
 WindowStats adc0WindowResults[ADC0_NUM_CH][NUM_WINDOWS];
+WindowStats adc0WindowResults1[ADC0_NUM_CH][NUM_WINDOWS];
 WindowStats adc1WindowResults[ADC1_NUM_CH][NUM_WINDOWS];
+WindowStats adc1WindowResults1[ADC1_NUM_CH][NUM_WINDOWS];
 WindowStats adc2WindowResults[ADC2_NUM_CH][NUM_WINDOWS];
+WindowStats adc2WindowResults1[ADC2_NUM_CH][NUM_WINDOWS];
 WindowStats adc3WindowResults[ADC3_NUM_CH][NUM_WINDOWS];
 
 char uartBuffer[256];
@@ -253,6 +274,45 @@ void setAcquisitionWindowADC3(uint16_t cycles)
     ADC_clearInterruptStatus(myADC3_BASE, ADC_INT_NUMBER3);
     ADC_clearInterruptStatus(myADC3_BASE, ADC_INT_NUMBER4);
     DEVICE_DELAY_US(100);
+}
+
+/********************************************************************************
+* Reconfigure the SOCs to remaining ADC Pins and set their Acquisition Windows *
+ *******************************************************************************/
+void ReconfigureandsetAcquisitionWindowADC0(uint16_t cycles)
+{
+    ADC_setupSOC(myADC0_BASE, ADC_SOC_NUMBER0, ADC_TRIGGER_EPWM1_SOCA, ADC_CH_ADCIN1, cycles);
+    ADC_setupSOC(myADC0_BASE, ADC_SOC_NUMBER1, ADC_TRIGGER_EPWM1_SOCB, ADC_CH_ADCIN3, cycles);
+    ADC_setupSOC(myADC0_BASE, ADC_SOC_NUMBER2, ADC_TRIGGER_EPWM2_SOCA, ADC_CH_ADCIN5, cycles);
+    ADC_clearInterruptStatus(myADC0_BASE, ADC_INT_NUMBER1);
+    ADC_clearInterruptStatus(myADC0_BASE, ADC_INT_NUMBER2);
+    ADC_clearInterruptStatus(myADC0_BASE, ADC_INT_NUMBER3);
+    DEVICE_DELAY_US(100);
+}
+
+void ReconfigureandsetAcquisitionWindowADC1(uint16_t cycles)
+{
+    ADC_setupSOC(myADC1_BASE, ADC_SOC_NUMBER3, ADC_TRIGGER_EPWM2_SOCB, ADC_CH_ADCIN1, cycles);
+    ADC_setupSOC(myADC1_BASE, ADC_SOC_NUMBER8, ADC_TRIGGER_EPWM5_SOCA, ADC_CH_ADCIN3, cycles);
+    ADC_setupSOC(myADC1_BASE, ADC_SOC_NUMBER9, ADC_TRIGGER_EPWM5_SOCB, ADC_CH_ADCIN5, cycles);
+    ADC_clearInterruptStatus(myADC1_BASE, ADC_INT_NUMBER1);
+    ADC_clearInterruptStatus(myADC1_BASE, ADC_INT_NUMBER2);
+    ADC_clearInterruptStatus(myADC1_BASE, ADC_INT_NUMBER3);
+    DEVICE_DELAY_US(100);
+}
+
+void ReconfigureandsetAcquisitionWindowADC2(uint16_t cycles)
+{
+    ADC_setupSOC(myADC2_BASE, ADC_SOC_NUMBER10, ADC_TRIGGER_EPWM6_SOCA, ADC_CH_ADCIN3, cycles);
+    ADC_setupSOC(myADC2_BASE, ADC_SOC_NUMBER11, ADC_TRIGGER_EPWM6_SOCB, ADC_CH_ADCIN5, cycles);
+    ADC_clearInterruptStatus(myADC2_BASE, ADC_INT_NUMBER1);
+    ADC_clearInterruptStatus(myADC2_BASE, ADC_INT_NUMBER2);
+    DEVICE_DELAY_US(100);
+}
+
+void ReconfigureandsetAcquisitionWindowADC3(uint16_t cycles)
+{
+
 }
 
 /********************************************************************************
@@ -776,6 +836,76 @@ void main(void)
     displayFinalTableADC3();
 
     GPIO_writePin(myBoardLED0_GPIO, 1);
+
+/* Phase 2 of the test */
+    delayMs(500);
+
+    UART_writeString("Press ANY KEY to start 12-channel ADC sweep test...\r\n\r\n");
+    waitForKeyPress();
+    UART_writeString("Starting sweep: ADC0(3ch) + ADC1(3ch) + ADC2(2ch) + ADC3(4ch)\r\n");
+    UART_writeString("========================================================\r\n");
+
+    for(i = 0; i < NUM_WINDOWS; i++)
+    {
+        currentWindow = ACQ_WINDOW_START + i;
+
+        sprintf(uartBuffer, "\r\n=== Window %2u cycles (%uns) ===\r\n",
+                currentWindow, currentWindow * 5);
+        UART_writeString(uartBuffer);
+
+        stopEPWMs();
+        delayMs(5);
+
+        /*
+         * Set acquisition window for ALL four ADC modules at the start of
+         * each window so that every channel is swept with the same setting.
+         */
+        ReconfigureandsetAcquisitionWindowADC0(currentWindow);
+        ReconfigureandsetAcquisitionWindowADC1(currentWindow);
+        ReconfigureandsetAcquisitionWindowADC2(currentWindow);
+        ReconfigureandsetAcquisitionWindowADC3(currentWindow);
+        delayMs(10);
+
+        /* ---- Run TESTS_PER_WINDOW repetitions for every ADC ---- */
+        for(j = 0; j < TESTS_PER_WINDOW; j++)
+        {
+            /* Each ADC module is tested sequentially.
+             * triggerSystemSync() is called inside every runSingleTest,
+             * so each module gets a clean EPWM-zero start.             */
+            runSingleTestADC0(j);
+            delayMs(20);
+
+            runSingleTestADC1(j);
+            delayMs(20);
+
+            runSingleTestADC2(j);
+            delayMs(20);
+
+            runSingleTestADC3(j);
+            delayMs(20);
+        }
+
+        /* Average the TESTS_PER_WINDOW runs for this window */
+        calculateWindowAverageADC0(i);
+        calculateWindowAverageADC1(i);
+        calculateWindowAverageADC2(i);
+        calculateWindowAverageADC3(i);
+
+        delayMs(100);
+    }
+
+    stopEPWMs();
+
+    /* ---- Print final summary tables ---- */
+    UART_writeString("\r\n\r\n===== FINAL RESULTS =====\r\n");
+
+    displayFinalTableADC0();
+    displayFinalTableADC1();
+    displayFinalTableADC2();
+    displayFinalTableADC3();
+
+    GPIO_writePin(myBoardLED0_GPIO, 1);
+
 
     while(1) { /* done */ }
 }

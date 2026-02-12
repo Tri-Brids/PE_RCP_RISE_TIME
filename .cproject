@@ -102,7 +102,7 @@
                         </toolChain>
                     </folderInfo>
                     <sourceEntries>
-                        <entry excluding="zero.c|Test_0_08_multi_ADC_0_01.c|test1 1.syscfg|device|Test_0_08.c|lab_ePwm_eCap_controlcard.syscfg|lab_main.c|2837xD_RAM_lnk_cpu1.cmd|device/driverlib" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+                        <entry excluding="Zero_001.c|Test_0_08_multi_ADC_0_01.c|test1 1.syscfg|device|Test_0_08.c|lab_ePwm_eCap_controlcard.syscfg|lab_main.c|2837xD_RAM_lnk_cpu1.cmd|device/driverlib" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
                     </sourceEntries>
                 </configuration>
             </storageModule>

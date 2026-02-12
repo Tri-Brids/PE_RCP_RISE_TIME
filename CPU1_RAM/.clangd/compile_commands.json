@@ -17,6 +17,6 @@
    {
       "directory" : "C:/Users/Ha_Alif/Documents/RCP FINAL/lab_ePWM_eCAP_controlcard/CPU1_RAM",
       "command"   : "clang++ -I\"C:/Users/Ha_Alif/Documents/RCP FINAL/lab_ePWM_eCAP_controlcard\" -I\"C:/Users/Ha_Alif/Documents/RCP FINAL/lab_ePWM_eCAP_controlcard/device\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib\" -I\"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include\" -DDEBUG -DCPU1 -DC2K_GEN2_DEVICES -DNO_SELECT_ECAP_INPUT -D_FLASH -I\"C:/Users/Ha_Alif/Documents/RCP FINAL/lab_ePWM_eCAP_controlcard/CPU1_RAM/syscfg\" -DF2837xD=1 -I\"C:/ti/C2000Ware_6_00_01_00/device_support/f2837xd/common/include/\" -I\"C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/\" -xc",
-      "file"      : "C:/Users/Ha_Alif/Documents/RCP FINAL/lab_ePWM_eCAP_controlcard/Zero_001.c"
+      "file"      : "C:/Users/Ha_Alif/Documents/RCP FINAL/lab_ePWM_eCAP_controlcard/zero.c"
    }
 ]

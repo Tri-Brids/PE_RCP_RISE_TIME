@@ -10,11 +10,11 @@ GEN_OPTS__FLAG := --cmd_file="syscfg/board.opt" --cmd_file="syscfg/c2000ware_lib
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
-"./Zero_001.obj" \
 "./syscfg/board.obj" \
 "./syscfg/device.obj" \
 "./syscfg/c2000ware_libraries.obj" \
 "./f2837xd_codestartbranch.obj" \
+"./zero.obj" \
 "../2837xD_FLASH_lnk_cpu1.cmd" \
 "C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/ccs/Debug/driverlib.lib" \
 $(GEN_CMDS__FLAG) \
@@ -140,8 +140,8 @@ lab_ePWM_eCAP_controlcard.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "Zero_001.obj" "syscfg\board.obj" "syscfg\device.obj" "syscfg\c2000ware_libraries.obj" "f2837xd_codestartbranch.obj" 
-	-$(RM) "Zero_001.d" "syscfg\board.d" "syscfg\device.d" "syscfg\c2000ware_libraries.d" 
+	-$(RM) "syscfg\board.obj" "syscfg\device.obj" "syscfg\c2000ware_libraries.obj" "f2837xd_codestartbranch.obj" "zero.obj" 
+	-$(RM) "syscfg\board.d" "syscfg\device.d" "syscfg\c2000ware_libraries.d" "zero.d" 
 	-$(RM) "f2837xd_codestartbranch.d" 
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
 	-@echo 'Finished clean'

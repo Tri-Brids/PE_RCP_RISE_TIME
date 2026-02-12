@@ -777,16 +777,16 @@ void main(void)
              * triggerSystemSync() is called inside every runSingleTest,
              * so each module gets a clean EPWM-zero start.             */
             runSingleTestADC0(j);
-            delayMs(200);
+            delayMs(20);
 
             runSingleTestADC1(j);
-            delayMs(200);
+            delayMs(20);
 
             runSingleTestADC2(j);
-            delayMs(200);
+            delayMs(20);
 
             runSingleTestADC3(j);
-            delayMs(200);
+            delayMs(20);
         }
 
         /* Average the TESTS_PER_WINDOW runs for this window */
