@@ -44,7 +44,6 @@ typedef struct {
 
 /*********************************************************************************
  * Extern Variable Declarations
- * Single definition in Test_0_08_multi_ADC.c
  *********************************************************************************/
 
 /* ADC0 */
@@ -116,14 +115,66 @@ __interrupt void INT_myADC3_4_ISR(void);
 /* Control */
 void waitForKeyPress(void);
 void stopEPWMs(void);
-void triggerSystemSync(void);
+void startPWM(void);
 void delayMs(uint16_t ms);
+
+
+/*---------------------------- Channel layout PHASE 1  -------------------------
+ *
+ *  ADC0 (ADCA)  myADC0_BASE / myADC0_RESULT_BASE  - 3 interrupt-driven channels
+ *    ch[0] = SOC0  -> ADCIN0   INT1   EPWM1_SOCA
+ *    ch[1] = SOC1  -> ADCIN2   INT2   EPWM1_SOCB
+ *    ch[2] = SOC2  -> ADCIN4   INT3   EPWM2_SOCA
+ *
+ *  ADC1 (ADCB)  myADC1_BASE / myADC1_RESULT_BASE  - 3 interrupt-driven channels
+ *    ch[0] = SOC3  -> ADCIN0   INT1   EPWM2_SOCB
+ *    ch[1] = SOC8  -> ADCIN2   INT2   EPWM5_SOCA
+ *    ch[2] = SOC9  -> ADCIN4   INT3   EPWM5_SOCB
+ *
+ *  ADC2 (ADCC)  myADC2_BASE / myADC2_RESULT_BASE  - 2 interrupt-driven channels
+ *    ch[0] = SOC10 -> ADCIN2   INT1   EPWM6_SOCA
+ *    ch[1] = SOC11 -> ADCIN4   INT2   EPWM6_SOCB
+ *
+ *  ADC3 (ADCD)  myADC3_BASE / myADC3_RESULT_BASE  - 4 interrupt-driven channels
+ *    ch[0] = SOC4  -> ADCIN0   INT1   EPWM3_SOCA
+ *    ch[1] = SOC5  -> ADCIN1   INT2   EPWM3_SOCB
+ *    ch[2] = SOC6  -> ADCIN2   INT3   EPWM4_SOCA
+ *    ch[3] = SOC7  -> ADCIN3   INT4   EPWM4_SOCB
+ *
+ *  Total: 12 channels
+*/
 
 /* Acquisition window setters */
 void setAcquisitionWindowADC0(uint16_t cycles);
 void setAcquisitionWindowADC1(uint16_t cycles);
 void setAcquisitionWindowADC2(uint16_t cycles);
 void setAcquisitionWindowADC3(uint16_t cycles);
+
+
+/*---------------------------- Channel layout PHASE 2  -------------------------
+ *
+ *  ADC0 (ADCA)  myADC0_BASE / myADC0_RESULT_BASE  - 3 interrupt-driven channels
+ *    ch[0] = SOC0  -> ADCIN1   INT1   EPWM1_SOCA
+ *    ch[1] = SOC1  -> ADCIN3   INT2   EPWM1_SOCB
+ *    ch[2] = SOC2  -> ADCIN5   INT3   EPWM2_SOCA
+ *
+ *  ADC1 (ADCB)  myADC1_BASE / myADC1_RESULT_BASE  - 3 interrupt-driven channels
+ *    ch[0] = SOC3  -> ADCIN1   INT1   EPWM2_SOCB
+ *    ch[1] = SOC8  -> ADCIN3   INT2   EPWM5_SOCA
+ *    ch[2] = SOC9  -> ADCIN5   INT3   EPWM5_SOCB
+ *
+ *  ADC2 (ADCC)  myADC2_BASE / myADC2_RESULT_BASE  - 2 interrupt-driven channels
+ *    ch[0] = SOC10 -> ADCIN3   INT1   EPWM6_SOCA
+ *    ch[1] = SOC11 -> ADCIN5   INT2   EPWM6_SOCB
+ *
+ *  ADC3 (ADCD)  myADC3_BASE / myADC3_RESULT_BASE  - 4 interrupt-driven channels
+ *    ch[0] = SOC4 (SOC 12 in syscfg) -> ADCIN4    INT1   EPWM3_SOCA
+ *    ch[1] = SOC5 (SOC 13 in syscfg) -> ADCIN5    INT2   EPWM3_SOCB
+ *    ch[2] = SOC6 (SOC 14 in syscfg) -> ADCIN14   INT3   EPWM4_SOCA
+ *    ch[3] = SOC7 (SOC 15 in syscfg) -> ADCIN15   INT4   EPWM4_SOCB
+ *
+ *  Total: 12 channels
+*/
 
 /* Reconfigure the SOCs to remaining ADC Pins and set their Acquisition Windows */
 void ReconfigureandsetAcquisitionWindowADC0(uint16_t cycles);

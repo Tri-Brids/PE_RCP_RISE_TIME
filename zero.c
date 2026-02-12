@@ -103,7 +103,7 @@ void stopEPWMs(void)
     systemSynced = 0;
 }
 
-void triggerSystemSync(void)
+void startPWM(void)
 {
     EPWM_setTimeBaseCounter(myEPWM0_BASE, 0);
 
@@ -291,7 +291,15 @@ void ReconfigureandsetAcquisitionWindowADC2(uint16_t cycles)
 
 void ReconfigureandsetAcquisitionWindowADC3(uint16_t cycles)
 {
-
+    ADC_setupSOC(myADC3_BASE, ADC_SOC_NUMBER4, ADC_TRIGGER_EPWM3_SOCA, ADC_CH_ADCIN4, cycles);
+    ADC_setupSOC(myADC3_BASE, ADC_SOC_NUMBER5, ADC_TRIGGER_EPWM3_SOCB, ADC_CH_ADCIN5, cycles);
+    ADC_setupSOC(myADC3_BASE, ADC_SOC_NUMBER6, ADC_TRIGGER_EPWM4_SOCA, ADC_CH_ADCIN14, cycles);
+    ADC_setupSOC(myADC3_BASE, ADC_SOC_NUMBER7, ADC_TRIGGER_EPWM4_SOCB, ADC_CH_ADCIN15, cycles);
+    ADC_clearInterruptStatus(myADC3_BASE, ADC_INT_NUMBER1);
+    ADC_clearInterruptStatus(myADC3_BASE, ADC_INT_NUMBER2);
+    ADC_clearInterruptStatus(myADC3_BASE, ADC_INT_NUMBER3);
+    ADC_clearInterruptStatus(myADC3_BASE, ADC_INT_NUMBER4);
+    DEVICE_DELAY_US(100);
 }
 
 /********************************************************************************
@@ -445,7 +453,7 @@ void runSingleTestADC0(uint16_t testNumber)
     }
 
     GPIO_writePin(myBoardLED0_GPIO, 0);
-    triggerSystemSync();
+    startPWM();
 
     while(   adc0SampleCount[0] < RESULTS_BUFFER_SIZE
           || adc0SampleCount[1] < RESULTS_BUFFER_SIZE
@@ -493,7 +501,7 @@ void runSingleTestADC1(uint16_t testNumber)
     }
 
     GPIO_writePin(myBoardLED0_GPIO, 0);
-    triggerSystemSync();
+    startPWM();
 
     while(   adc1SampleCount[0] < RESULTS_BUFFER_SIZE
           || adc1SampleCount[1] < RESULTS_BUFFER_SIZE
@@ -541,7 +549,7 @@ void runSingleTestADC2(uint16_t testNumber)
     }
 
     GPIO_writePin(myBoardLED0_GPIO, 0);
-    triggerSystemSync();
+    startPWM();
 
     while(   adc2SampleCount[0] < RESULTS_BUFFER_SIZE
           || adc2SampleCount[1] < RESULTS_BUFFER_SIZE)
@@ -582,7 +590,7 @@ void runSingleTestADC3(uint16_t testNumber)
     }
 
     GPIO_writePin(myBoardLED0_GPIO, 0);
-    triggerSystemSync();
+    startPWM();
 
     while(   adc3SampleCount[0] < RESULTS_BUFFER_SIZE
           || adc3SampleCount[1] < RESULTS_BUFFER_SIZE
@@ -750,7 +758,7 @@ void main(void)
 
     delayMs(500);
 
-    UART_writeString("Press ANY KEY to start 12-channel ADC sweep test...\r\n\r\n");
+    UART_writeString("Press ANY KEY to start Phase 1 ADC sweep test...\r\n\r\n");
     waitForKeyPress();
     UART_writeString("Starting sweep: ADC0(3ch) + ADC1(3ch) + ADC2(2ch) + ADC3(4ch)\r\n");
     UART_writeString("========================================================\r\n");
@@ -780,7 +788,7 @@ void main(void)
         for(j = 0; j < TESTS_PER_WINDOW; j++)
         {
             /* Each ADC module is tested sequentially.
-             * triggerSystemSync() is called inside every runSingleTest,
+             * startPWM() is called inside every runSingleTest,
              * so each module gets a clean EPWM-zero start.             */
             runSingleTestADC0(j);
             delayMs(20);
@@ -804,10 +812,20 @@ void main(void)
         delayMs(100);
     }
 
-    stopEPWMs();
+stopEPWMs();
 
     /* ---- Print final summary tables ---- */
-    UART_writeString("\r\n\r\n===== FINAL RESULTS =====\r\n");
+    UART_writeString("\r\n\r\n");
+    UART_writeString("========================================================\r\n");
+    UART_writeString("========================================================\r\n");
+    UART_writeString("               PHASE 1 FINAL RESULTS                    \r\n");
+    UART_writeString("========================================================\r\n");
+    UART_writeString("  ADC0: Testing ADCIN0, ADCIN2, ADCIN4                  \r\n");
+    UART_writeString("  ADC1: Testing ADCIN0, ADCIN2, ADCIN4                  \r\n");
+    UART_writeString("  ADC2: Testing ADCIN2, ADCIN4                          \r\n");
+    UART_writeString("  ADC3: Testing ADCIN0, ADCIN1, ADCIN2, ADCIN3          \r\n");
+    UART_writeString("========================================================\r\n");
+    UART_writeString("========================================================\r\n");
 
     displayFinalTableADC0();
     displayFinalTableADC1();
@@ -819,8 +837,7 @@ void main(void)
 /* Phase 2 of the test */
     delayMs(500);
 
-    UART_writeString("Press ANY KEY to start 12-channel ADC sweep test...\r\n\r\n");
-    waitForKeyPress();
+    UART_writeString("===========PHASE 2 Of the TEST...============\r\n\r\n");
     UART_writeString("Starting sweep: ADC0(3ch) + ADC1(3ch) + ADC2(2ch) + ADC3(4ch)\r\n");
     UART_writeString("========================================================\r\n");
 
@@ -849,7 +866,7 @@ void main(void)
         for(j = 0; j < TESTS_PER_WINDOW; j++)
         {
             /* Each ADC module is tested sequentially.
-             * triggerSystemSync() is called inside every runSingleTest,
+             * startPWM() is called inside every runSingleTest,
              * so each module gets a clean EPWM-zero start.             */
             runSingleTestADC0(j);
             delayMs(20);
@@ -876,7 +893,17 @@ void main(void)
     stopEPWMs();
 
     /* ---- Print final summary tables ---- */
-    UART_writeString("\r\n\r\n===== FINAL RESULTS =====\r\n");
+    UART_writeString("\r\n\r\n");
+    UART_writeString("========================================================\r\n");
+    UART_writeString("========================================================\r\n");
+    UART_writeString("               PHASE 2 FINAL RESULTS                    \r\n");
+    UART_writeString("========================================================\r\n");
+    UART_writeString("  ADC0: Testing ADCIN1, ADCIN3, ADCIN5                  \r\n");
+    UART_writeString("  ADC1: Testing ADCIN1, ADCIN3, ADCIN5                  \r\n");
+    UART_writeString("  ADC2: Testing ADCIN3, ADCIN5                          \r\n");
+    UART_writeString("  ADC3: Testing ADCIN4, ADCIN5, ADCIN14, ADCIN15        \r\n");
+    UART_writeString("========================================================\r\n");
+    UART_writeString("========================================================\r\n");
 
     displayFinalTableADC0();
     displayFinalTableADC1();
