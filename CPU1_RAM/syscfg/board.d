@@ -2,20 +2,20 @@
 
 syscfg/board.obj: syscfg/board.c
 syscfg/board.obj: syscfg/board.h
-syscfg/board.obj: C:/Users/Ha_Alif/Documents/RCP\ FINAL/lab_ePWM_eCAP_controlcard/device/driverlib.h
+syscfg/board.obj: C:/Users/hamma/OneDrive\ -\ Taraz\ Technologies/TARAZ\ Technologies/RCP\ FINAL/lab_ePWM_eCAP_controlcard/device/driverlib.h
 syscfg/board.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_memmap.h
 syscfg/board.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/adc.h
-syscfg/board.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h
-syscfg/board.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_ti_config.h
-syscfg/board.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/linkage.h
-syscfg/board.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h
-syscfg/board.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_stdint40.h
-syscfg/board.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/stdint.h
-syscfg/board.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/cdefs.h
-syscfg/board.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_types.h
-syscfg/board.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_types.h
-syscfg/board.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_stdint.h
-syscfg/board.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_stdint.h
+syscfg/board.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h
+syscfg/board.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_ti_config.h
+syscfg/board.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/linkage.h
+syscfg/board.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h
+syscfg/board.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_stdint40.h
+syscfg/board.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/stdint.h
+syscfg/board.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/cdefs.h
+syscfg/board.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_types.h
+syscfg/board.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_types.h
+syscfg/board.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_stdint.h
+syscfg/board.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_stdint.h
 syscfg/board.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_adc.h
 syscfg/board.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_sysctl.h
 syscfg/board.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_types.h
@@ -90,39 +90,39 @@ syscfg/board.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/version
 syscfg/board.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminology_mapping.h
 syscfg/board.obj: syscfg/device.h
 syscfg/board.obj: syscfg/clocktree.h
-syscfg/board.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stddef.h
+syscfg/board.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stddef.h
 
 syscfg/board.c:
 
 syscfg/board.h:
 
-C:/Users/Ha_Alif/Documents/RCP\ FINAL/lab_ePWM_eCAP_controlcard/device/driverlib.h:
+C:/Users/hamma/OneDrive\ -\ Taraz\ Technologies/TARAZ\ Technologies/RCP\ FINAL/lab_ePWM_eCAP_controlcard/device/driverlib.h:
 
 C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_memmap.h:
 
 C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/adc.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_ti_config.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_ti_config.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/linkage.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/linkage.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_stdint40.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_stdint40.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/stdint.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/stdint.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/cdefs.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/cdefs.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_types.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_types.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_types.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_types.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_stdint.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_stdint.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_stdint.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_stdint.h:
 
 C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_adc.h:
 
@@ -272,5 +272,5 @@ syscfg/device.h:
 
 syscfg/clocktree.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stddef.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stddef.h:
 

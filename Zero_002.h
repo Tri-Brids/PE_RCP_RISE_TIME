@@ -9,7 +9,7 @@
 #include "board.h"
 #include <stdio.h>
 #include <string.h>
-#include <stdbool.h>  /* Added for bool type */
+#include <stdbool.h>
 
 /*********************************************************************************
  * Defines
@@ -22,8 +22,9 @@
 #define ACQ_WINDOW_END          20
 #define NUM_WINDOWS             (ACQ_WINDOW_END - ACQ_WINDOW_START + 1)
 
-#define TIMEOUT_CYCLES          1000000  /* Timeout for ADC completion */
+#define TIMEOUT_CYCLES          1000000
 
+#define MAX_CHANNELS            4  /* Maximum channels for shared runtime arrays */
 
 #define ADC0_NUM_CH     3
 #define ADC1_NUM_CH     3
@@ -43,47 +44,31 @@ typedef struct {
 } WindowStats;
 
 /*********************************************************************************
- * Extern Variable Declarations
+ * Extern Variable Declarations - HYBRID APPROACH
+ * 
+ * LEVEL 1: Shared runtime arrays (reused during sampling)
+ * LEVEL 2: Persistent storage (keeps final results per ADC)
  *********************************************************************************/
 
-/* ADC0 */
-extern volatile uint16_t adc0Results[ADC0_NUM_CH][RESULTS_BUFFER_SIZE];
-extern volatile uint16_t adc0Index[ADC0_NUM_CH];
-extern volatile uint16_t adc0SampleCount[ADC0_NUM_CH];
-extern volatile uint16_t adc0Complete[ADC0_NUM_CH];
+/* LEVEL 1: Shared volatile arrays - REUSED by all ADCs during sampling */
+extern volatile uint16_t adcResults[MAX_CHANNELS][RESULTS_BUFFER_SIZE];
+extern volatile uint16_t adcIndex[MAX_CHANNELS];
+extern volatile uint16_t adcSampleCount[MAX_CHANNELS];
+extern volatile uint16_t adcComplete[MAX_CHANNELS];
 
-/* ADC1 */
-extern volatile uint16_t adc1Results[ADC1_NUM_CH][RESULTS_BUFFER_SIZE];
-extern volatile uint16_t adc1Index[ADC1_NUM_CH];
-extern volatile uint16_t adc1SampleCount[ADC1_NUM_CH];
-extern volatile uint16_t adc1Complete[ADC1_NUM_CH];
-
-/* ADC2 */
-extern volatile uint16_t adc2Results[ADC2_NUM_CH][RESULTS_BUFFER_SIZE];
-extern volatile uint16_t adc2Index[ADC2_NUM_CH];
-extern volatile uint16_t adc2SampleCount[ADC2_NUM_CH];
-extern volatile uint16_t adc2Complete[ADC2_NUM_CH];
-
-/* ADC3 */
-extern volatile uint16_t adc3Results[ADC3_NUM_CH][RESULTS_BUFFER_SIZE];
-extern volatile uint16_t adc3Index[ADC3_NUM_CH];
-extern volatile uint16_t adc3SampleCount[ADC3_NUM_CH];
-extern volatile uint16_t adc3Complete[ADC3_NUM_CH];
-
-/* EPWM sync state */
-extern volatile uint16_t systemSynced;
-
-/* Per-test stats [channel][test_index] */
+/* LEVEL 2: Persistent storage - SEPARATE for each ADC */
 extern WindowStats adc0TestResults[ADC0_NUM_CH][TESTS_PER_WINDOW];
 extern WindowStats adc1TestResults[ADC1_NUM_CH][TESTS_PER_WINDOW];
 extern WindowStats adc2TestResults[ADC2_NUM_CH][TESTS_PER_WINDOW];
 extern WindowStats adc3TestResults[ADC3_NUM_CH][TESTS_PER_WINDOW];
 
-/* Window-averaged stats [channel][window_index] */
 extern WindowStats adc0WindowResults[ADC0_NUM_CH][NUM_WINDOWS];
 extern WindowStats adc1WindowResults[ADC1_NUM_CH][NUM_WINDOWS];
 extern WindowStats adc2WindowResults[ADC2_NUM_CH][NUM_WINDOWS];
 extern WindowStats adc3WindowResults[ADC3_NUM_CH][NUM_WINDOWS];
+
+/* EPWM sync state */
+extern volatile uint16_t systemSynced;
 
 /* Shared UART scratch buffer */
 extern char uartBuffer[256];
@@ -118,63 +103,11 @@ void stopEPWMs(void);
 void startPWM(void);
 void delayMs(uint16_t ms);
 
-
-/*---------------------------- Channel layout PHASE 1  -------------------------
- *
- *  ADC0 (ADCA)  myADC0_BASE / myADC0_RESULT_BASE  - 3 interrupt-driven channels
- *    ch[0] = SOC0  -> ADCIN0   INT1   EPWM1_SOCA
- *    ch[1] = SOC1  -> ADCIN2   INT2   EPWM1_SOCB
- *    ch[2] = SOC2  -> ADCIN4   INT3   EPWM2_SOCA
- *
- *  ADC1 (ADCB)  myADC1_BASE / myADC1_RESULT_BASE  - 3 interrupt-driven channels
- *    ch[0] = SOC3  -> ADCIN0   INT1   EPWM2_SOCB
- *    ch[1] = SOC8  -> ADCIN2   INT2   EPWM5_SOCA
- *    ch[2] = SOC9  -> ADCIN4   INT3   EPWM5_SOCB
- *
- *  ADC2 (ADCC)  myADC2_BASE / myADC2_RESULT_BASE  - 2 interrupt-driven channels
- *    ch[0] = SOC10 -> ADCIN2   INT1   EPWM6_SOCA
- *    ch[1] = SOC11 -> ADCIN4   INT2   EPWM6_SOCB
- *
- *  ADC3 (ADCD)  myADC3_BASE / myADC3_RESULT_BASE  - 4 interrupt-driven channels
- *    ch[0] = SOC4  -> ADCIN0   INT1   EPWM3_SOCA
- *    ch[1] = SOC5  -> ADCIN1   INT2   EPWM3_SOCB
- *    ch[2] = SOC6  -> ADCIN2   INT3   EPWM4_SOCA
- *    ch[3] = SOC7  -> ADCIN3   INT4   EPWM4_SOCB
- *
- *  Total: 12 channels
-*/
-
 /* Acquisition window setters */
 void setAcquisitionWindowADC0(uint16_t cycles);
 void setAcquisitionWindowADC1(uint16_t cycles);
 void setAcquisitionWindowADC2(uint16_t cycles);
 void setAcquisitionWindowADC3(uint16_t cycles);
-
-
-/*---------------------------- Channel layout PHASE 2  -------------------------
- *
- *  ADC0 (ADCA)  myADC0_BASE / myADC0_RESULT_BASE  - 3 interrupt-driven channels
- *    ch[0] = SOC0  -> ADCIN1   INT1   EPWM1_SOCA
- *    ch[1] = SOC1  -> ADCIN3   INT2   EPWM1_SOCB
- *    ch[2] = SOC2  -> ADCIN5   INT3   EPWM2_SOCA
- *
- *  ADC1 (ADCB)  myADC1_BASE / myADC1_RESULT_BASE  - 3 interrupt-driven channels
- *    ch[0] = SOC3  -> ADCIN1   INT1   EPWM2_SOCB
- *    ch[1] = SOC8  -> ADCIN3   INT2   EPWM5_SOCA
- *    ch[2] = SOC9  -> ADCIN5   INT3   EPWM5_SOCB
- *
- *  ADC2 (ADCC)  myADC2_BASE / myADC2_RESULT_BASE  - 2 interrupt-driven channels
- *    ch[0] = SOC10 -> ADCIN3   INT1   EPWM6_SOCA
- *    ch[1] = SOC11 -> ADCIN5   INT2   EPWM6_SOCB
- *
- *  ADC3 (ADCD)  myADC3_BASE / myADC3_RESULT_BASE  - 4 interrupt-driven channels
- *    ch[0] = SOC4 (SOC 12 in syscfg) -> ADCIN4    INT1   EPWM3_SOCA
- *    ch[1] = SOC5 (SOC 13 in syscfg) -> ADCIN5    INT2   EPWM3_SOCB
- *    ch[2] = SOC6 (SOC 14 in syscfg) -> ADCIN14   INT3   EPWM4_SOCA
- *    ch[3] = SOC7 (SOC 15 in syscfg) -> ADCIN15   INT4   EPWM4_SOCB
- *
- *  Total: 12 channels
-*/
 
 /* Reconfigure the SOCs to remaining ADC Pins and set their Acquisition Windows */
 void ReconfigureandsetAcquisitionWindowADC0(uint16_t cycles);

@@ -27,11 +27,11 @@
 	<variableList>
 		<variable>
 			<name>C2000WARE_DLIB_ROOT</name>
-			<value>file:/C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib</value>
+			<value>$%7BCOM_TI_C2000WARE_INSTALL_DIR%7D/driverlib/f2837xd/driverlib</value>
 		</variable>
 		<variable>
 			<name>C2000WARE_ROOT</name>
-			<value>file:/C:/ti/C2000Ware_6_00_01_00</value>
+			<value>$%7BCOM_TI_C2000WARE_INSTALL_DIR%7D</value>
 		</variable>
 	</variableList>
 </projectDescription>

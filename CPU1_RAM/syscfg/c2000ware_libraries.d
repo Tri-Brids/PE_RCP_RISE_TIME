@@ -3,20 +3,20 @@
 syscfg/c2000ware_libraries.obj: syscfg/c2000ware_libraries.c
 syscfg/c2000ware_libraries.obj: syscfg/c2000ware_libraries.h
 syscfg/c2000ware_libraries.obj: syscfg/board.h
-syscfg/c2000ware_libraries.obj: C:/Users/Ha_Alif/Documents/RCP\ FINAL/lab_ePWM_eCAP_controlcard/device/driverlib.h
+syscfg/c2000ware_libraries.obj: C:/Users/hamma/OneDrive\ -\ Taraz\ Technologies/TARAZ\ Technologies/RCP\ FINAL/lab_ePWM_eCAP_controlcard/device/driverlib.h
 syscfg/c2000ware_libraries.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_memmap.h
 syscfg/c2000ware_libraries.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/adc.h
-syscfg/c2000ware_libraries.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h
-syscfg/c2000ware_libraries.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_ti_config.h
-syscfg/c2000ware_libraries.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/linkage.h
-syscfg/c2000ware_libraries.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h
-syscfg/c2000ware_libraries.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_stdint40.h
-syscfg/c2000ware_libraries.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/stdint.h
-syscfg/c2000ware_libraries.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/cdefs.h
-syscfg/c2000ware_libraries.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_types.h
-syscfg/c2000ware_libraries.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_types.h
-syscfg/c2000ware_libraries.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_stdint.h
-syscfg/c2000ware_libraries.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_stdint.h
+syscfg/c2000ware_libraries.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h
+syscfg/c2000ware_libraries.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_ti_config.h
+syscfg/c2000ware_libraries.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/linkage.h
+syscfg/c2000ware_libraries.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h
+syscfg/c2000ware_libraries.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_stdint40.h
+syscfg/c2000ware_libraries.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/stdint.h
+syscfg/c2000ware_libraries.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/cdefs.h
+syscfg/c2000ware_libraries.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_types.h
+syscfg/c2000ware_libraries.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_types.h
+syscfg/c2000ware_libraries.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_stdint.h
+syscfg/c2000ware_libraries.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_stdint.h
 syscfg/c2000ware_libraries.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_adc.h
 syscfg/c2000ware_libraries.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_sysctl.h
 syscfg/c2000ware_libraries.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_types.h
@@ -91,7 +91,7 @@ syscfg/c2000ware_libraries.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/dri
 syscfg/c2000ware_libraries.obj: C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/driver_inclusive_terminology_mapping.h
 syscfg/c2000ware_libraries.obj: syscfg/device.h
 syscfg/c2000ware_libraries.obj: syscfg/clocktree.h
-syscfg/c2000ware_libraries.obj: C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stddef.h
+syscfg/c2000ware_libraries.obj: C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stddef.h
 
 syscfg/c2000ware_libraries.c:
 
@@ -99,33 +99,33 @@ syscfg/c2000ware_libraries.h:
 
 syscfg/board.h:
 
-C:/Users/Ha_Alif/Documents/RCP\ FINAL/lab_ePWM_eCAP_controlcard/device/driverlib.h:
+C:/Users/hamma/OneDrive\ -\ Taraz\ Technologies/TARAZ\ Technologies/RCP\ FINAL/lab_ePWM_eCAP_controlcard/device/driverlib.h:
 
 C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_memmap.h:
 
 C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/adc.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdbool.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_ti_config.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_ti_config.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/linkage.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/linkage.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stdint.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_stdint40.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/_stdint40.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/stdint.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/stdint.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/cdefs.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/cdefs.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_types.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_types.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_types.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_types.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_stdint.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/machine/_stdint.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_stdint.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/sys/_stdint.h:
 
 C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/inc/hw_adc.h:
 
@@ -275,5 +275,5 @@ syscfg/device.h:
 
 syscfg/clocktree.h:
 
-C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stddef.h:
+C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include/stddef.h:
 

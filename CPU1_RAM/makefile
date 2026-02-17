@@ -4,17 +4,17 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS
+CG_TOOL_ROOT := C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS
 
 GEN_OPTS__FLAG := --cmd_file="syscfg/board.opt" --cmd_file="syscfg/c2000ware_libraries.opt" 
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./Zero_002.obj" \
 "./syscfg/board.obj" \
 "./syscfg/device.obj" \
 "./syscfg/c2000ware_libraries.obj" \
 "./f2837xd_codestartbranch.obj" \
-"./zero.obj" \
 "../2837xD_FLASH_lnk_cpu1.cmd" \
 "C:/ti/C2000Ware_6_00_01_00/driverlib/f2837xd/driverlib/ccs/Debug/driverlib.lib" \
 $(GEN_CMDS__FLAG) \
@@ -133,15 +133,15 @@ all: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 lab_ePWM_eCAP_controlcard.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: C2000 Linker'
-	"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla2 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu0 -O0 --opt_for_speed=0 --fp_mode=relaxed --define=DEBUG --define=CPU1 --define=C2K_GEN2_DEVICES --define=NO_SELECT_ECAP_INPUT --define=_FLASH --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"lab_ePWM_eCAP_controlcard.map" --stack_size=0x100 --warn_sections -i"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/lib" -i"C:/ti/ccs2040/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include" --reread_libs --diag_wrap=off --display_error_number --xml_link_info="lab_ePWM_eCAP_controlcard_linkInfo.xml" --entry_point=code_start --rom_model -o "lab_ePWM_eCAP_controlcard.out" $(ORDERED_OBJS)
+	"C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla2 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu0 -O0 --opt_for_speed=0 --fp_mode=relaxed --define=DEBUG --define=CPU1 --define=C2K_GEN2_DEVICES --define=NO_SELECT_ECAP_INPUT --define=_FLASH --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"lab_ePWM_eCAP_controlcard.map" --stack_size=0x100 --warn_sections -i"C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/lib" -i"C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-c2000_22.6.3.LTS/include" --reread_libs --diag_wrap=off --display_error_number --xml_link_info="lab_ePWM_eCAP_controlcard_linkInfo.xml" --entry_point=code_start --rom_model -o "lab_ePWM_eCAP_controlcard.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "syscfg\board.obj" "syscfg\device.obj" "syscfg\c2000ware_libraries.obj" "f2837xd_codestartbranch.obj" "zero.obj" 
-	-$(RM) "syscfg\board.d" "syscfg\device.d" "syscfg\c2000ware_libraries.d" "zero.d" 
+	-$(RM) "Zero_002.obj" "syscfg\board.obj" "syscfg\device.obj" "syscfg\c2000ware_libraries.obj" "f2837xd_codestartbranch.obj" 
+	-$(RM) "Zero_002.d" "syscfg\board.d" "syscfg\device.d" "syscfg\c2000ware_libraries.d" 
 	-$(RM) "f2837xd_codestartbranch.d" 
 	-$(RMDIR) $(GEN_MISC_DIRS__QUOTED)
 	-@echo 'Finished clean'

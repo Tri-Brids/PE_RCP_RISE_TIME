@@ -85,7 +85,7 @@ SECTIONS
 
 #if defined(__TI_EABI__)
    .init_array         : > FLASHB,       PAGE = 0,       ALIGN(8)
-   .bss                : > RAMLS5 | RAMGS0 |RAMGS1 | RAMGS2 | RAMGS3 |RAMGS4 | RAMGS5 | RAMGS6 |RAMGS7 | RAMGS8 | RAMGS9 |RAMGS10 | RAMGS11 | RAMGS12 |RAMGS13,       PAGE = 1
+   .bss                : >> RAMLS5 | RAMGS0 |RAMGS1 | RAMGS2 | RAMGS3 |RAMGS4 | RAMGS5 | RAMGS6 |RAMGS7 | RAMGS8 | RAMGS9 |RAMGS10 | RAMGS11 | RAMGS12 |RAMGS13,       PAGE = 1
    .bss:output         : > RAMLS3,       PAGE = 0
    .bss:cio            : > RAMLS5,       PAGE = 1
    .data               : > RAMLS5,       PAGE = 1

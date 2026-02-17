@@ -18,10 +18,10 @@ ASM_SRCS += \
 C:/ti/C2000Ware_6_00_01_00/device_support/f2837xd/common/source/f2837xd_codestartbranch.asm 
 
 C_SRCS += \
+../Zero_002.c \
 ./syscfg/board.c \
 ./syscfg/device.c \
-./syscfg/c2000ware_libraries.c \
-../zero.c 
+./syscfg/c2000ware_libraries.c 
 
 GEN_FILES += \
 ./syscfg/board.c \
@@ -34,21 +34,21 @@ GEN_MISC_DIRS += \
 ./syscfg 
 
 C_DEPS += \
+./Zero_002.d \
 ./syscfg/board.d \
 ./syscfg/device.d \
-./syscfg/c2000ware_libraries.d \
-./zero.d 
+./syscfg/c2000ware_libraries.d 
 
 GEN_OPTS += \
 ./syscfg/board.opt \
 ./syscfg/c2000ware_libraries.opt 
 
 OBJS += \
+./Zero_002.obj \
 ./syscfg/board.obj \
 ./syscfg/device.obj \
 ./syscfg/c2000ware_libraries.obj \
-./f2837xd_codestartbranch.obj \
-./zero.obj 
+./f2837xd_codestartbranch.obj 
 
 ASM_DEPS += \
 ./f2837xd_codestartbranch.d 
@@ -69,11 +69,11 @@ GEN_MISC_DIRS__QUOTED += \
 "syscfg" 
 
 OBJS__QUOTED += \
+"Zero_002.obj" \
 "syscfg\board.obj" \
 "syscfg\device.obj" \
 "syscfg\c2000ware_libraries.obj" \
-"f2837xd_codestartbranch.obj" \
-"zero.obj" 
+"f2837xd_codestartbranch.obj" 
 
 GEN_MISC_FILES__QUOTED += \
 "syscfg\board.h" \
@@ -88,10 +88,10 @@ GEN_MISC_FILES__QUOTED += \
 "syscfg\clocktree.h" 
 
 C_DEPS__QUOTED += \
+"Zero_002.d" \
 "syscfg\board.d" \
 "syscfg\device.d" \
-"syscfg\c2000ware_libraries.d" \
-"zero.d" 
+"syscfg\c2000ware_libraries.d" 
 
 GEN_FILES__QUOTED += \
 "syscfg\board.c" \
@@ -103,14 +103,14 @@ GEN_FILES__QUOTED += \
 ASM_DEPS__QUOTED += \
 "f2837xd_codestartbranch.d" 
 
-SYSCFG_SRCS__QUOTED += \
-"../test1.syscfg" 
-
 C_SRCS__QUOTED += \
+"../Zero_002.c" \
 "./syscfg/board.c" \
 "./syscfg/device.c" \
-"./syscfg/c2000ware_libraries.c" \
-"../zero.c" 
+"./syscfg/c2000ware_libraries.c" 
+
+SYSCFG_SRCS__QUOTED += \
+"../test1.syscfg" 
 
 ASM_SRCS__QUOTED += \
 "C:/ti/C2000Ware_6_00_01_00/device_support/f2837xd/common/source/f2837xd_codestartbranch.asm" 
