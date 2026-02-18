@@ -3,11 +3,6 @@
  *******************************************************************************/
 #include "Zero_002.h"
 
-/********************************************************************************
- * Global Variable Definitions
- * HYBRID APPROACH: Shared runtime arrays + separate result storage
- *******************************************************************************/
-
 /* LEVEL 1: Shared runtime arrays - REUSED during sampling */
 volatile uint16_t adcResults[MAX_CHANNELS][RESULTS_BUFFER_SIZE];
 volatile uint16_t adcIndex[MAX_CHANNELS];
@@ -31,14 +26,14 @@ char uartBuffer[256];
 /********************************************************************************
  * Helper Macros - Using shared arrays
  *******************************************************************************/
-#define ADC_ISR_BODY(ch, resultBase, socNum, adcBase, intNum, ackGroup)  \
-    adcResults[ch][adcIndex[ch]] = ADC_readResult((resultBase), (socNum)); \
-    adcIndex[ch]++;                                                      \
-    adcSampleCount[ch]++;                                                \
-    if(adcIndex[ch] >= RESULTS_BUFFER_SIZE) adcIndex[ch] = 0;           \
-    ADC_clearInterruptStatus((adcBase), (intNum));                       \
-    Interrupt_clearACKGroup((ackGroup));                                 \
-    adcComplete[ch] = 1;
+#define ADC_ISR_BODY(ch, resultBase, socNum, adcBase, intNum, ackGroup)     \
+    adcResults[ch][adcIndex[ch]] = ADC_readResult((resultBase), (socNum));  \
+    adcIndex[ch]++;                                                         \
+    adcSampleCount[ch]++;                                                   \
+    if(adcIndex[ch] >= RESULTS_BUFFER_SIZE) adcIndex[ch] = 0;               \
+    ADC_clearInterruptStatus((adcBase), (intNum));                          \
+    Interrupt_clearACKGroup((ackGroup));                                    \
+    adcComplete[ch] = 1;  
 
 /********************************************************************************
  * UART Helpers
@@ -99,7 +94,6 @@ void startPWM(void)
     EPWM_setTimeBaseCounter(myEPWM5_BASE, 0);
     EPWM_setTimeBaseCounter(myEPWM6_BASE, 0);
     EPWM_setTimeBaseCounter(myEPWM7_BASE, 0);
-
     ADC_clearInterruptStatus(myADC0_BASE, ADC_INT_NUMBER1);
     ADC_clearInterruptStatus(myADC0_BASE, ADC_INT_NUMBER2);
     ADC_clearInterruptStatus(myADC0_BASE, ADC_INT_NUMBER3);
@@ -406,7 +400,7 @@ static void pollChannel(uint32_t adcBase, ADC_SOCNumber socNum,
  *******************************************************************************/
 void runSingleTestADC0(uint16_t testNumber)
 {
-    UART_writeString(" [ADC0] Sampling IN0, IN2, IN4...");
+    //UART_writeString(" [ADC0] Sampling IN0, IN2, IN4...");
     
     resetSharedArrays(ADC0_NUM_CH);
     GPIO_writePin(myBoardLED0_GPIO, 0);
@@ -429,14 +423,14 @@ void runSingleTestADC0(uint16_t testNumber)
     calculateStatistics(adcResults[1], &adc0TestResults[1][testNumber]);
     calculateStatistics(adcResults[2], &adc0TestResults[2][testNumber]);
 
-    displayTestResult(testNumber, "A0-IN0", &adc0TestResults[0][testNumber]);
-    displayTestResult(testNumber, "A0-IN2", &adc0TestResults[1][testNumber]);
-    displayTestResult(testNumber, "A0-IN4", &adc0TestResults[2][testNumber]);
+    //displayTestResult(testNumber, "A0-IN0", &adc0TestResults[0][testNumber]);
+    //displayTestResult(testNumber, "A0-IN2", &adc0TestResults[1][testNumber]);
+    //displayTestResult(testNumber, "A0-IN4", &adc0TestResults[2][testNumber]);
 }
 
 void runSingleTestADC1(uint16_t testNumber)
 {
-    UART_writeString(" [ADC1] Sampling IN0, IN2, IN4...");
+    //UART_writeString(" [ADC1] Sampling IN0, IN2, IN4...");
     
     resetSharedArrays(ADC1_NUM_CH);
     GPIO_writePin(myBoardLED0_GPIO, 0);
@@ -458,14 +452,14 @@ void runSingleTestADC1(uint16_t testNumber)
     calculateStatistics(adcResults[1], &adc1TestResults[1][testNumber]);
     calculateStatistics(adcResults[2], &adc1TestResults[2][testNumber]);
 
-    displayTestResult(testNumber, "A1-IN0", &adc1TestResults[0][testNumber]);
-    displayTestResult(testNumber, "A1-IN2", &adc1TestResults[1][testNumber]);
-    displayTestResult(testNumber, "A1-IN4", &adc1TestResults[2][testNumber]);
+    //displayTestResult(testNumber, "A1-IN0", &adc1TestResults[0][testNumber]);
+    //displayTestResult(testNumber, "A1-IN2", &adc1TestResults[1][testNumber]);
+    //displayTestResult(testNumber, "A1-IN4", &adc1TestResults[2][testNumber]);
 }
 
 void runSingleTestADC2(uint16_t testNumber)
 {
-    UART_writeString(" [ADC2] Sampling IN2, IN4...");
+    //UART_writeString(" [ADC2] Sampling IN2, IN4...");
     
     resetSharedArrays(ADC2_NUM_CH);
     GPIO_writePin(myBoardLED0_GPIO, 0);
@@ -484,13 +478,13 @@ void runSingleTestADC2(uint16_t testNumber)
     calculateStatistics(adcResults[0], &adc2TestResults[0][testNumber]);
     calculateStatistics(adcResults[1], &adc2TestResults[1][testNumber]);
 
-    displayTestResult(testNumber, "A2-IN2", &adc2TestResults[0][testNumber]);
-    displayTestResult(testNumber, "A2-IN4", &adc2TestResults[1][testNumber]);
+    //displayTestResult(testNumber, "A2-IN2", &adc2TestResults[0][testNumber]);
+    //displayTestResult(testNumber, "A2-IN4", &adc2TestResults[1][testNumber]);
 }
 
 void runSingleTestADC3(uint16_t testNumber)
 {
-    UART_writeString(" [ADC3] Sampling IN0, IN1, IN2, IN3...");
+    //UART_writeString(" [ADC3] Sampling IN0, IN1, IN2, IN3...");
     
     resetSharedArrays(ADC3_NUM_CH);
     GPIO_writePin(myBoardLED0_GPIO, 0);
@@ -515,10 +509,10 @@ void runSingleTestADC3(uint16_t testNumber)
     calculateStatistics(adcResults[2], &adc3TestResults[2][testNumber]);
     calculateStatistics(adcResults[3], &adc3TestResults[3][testNumber]);
 
-    displayTestResult(testNumber, "A3-IN0", &adc3TestResults[0][testNumber]);
-    displayTestResult(testNumber, "A3-IN1", &adc3TestResults[1][testNumber]);
-    displayTestResult(testNumber, "A3-IN2", &adc3TestResults[2][testNumber]);
-    displayTestResult(testNumber, "A3-IN3", &adc3TestResults[3][testNumber]);
+    //displayTestResult(testNumber, "A3-IN0", &adc3TestResults[0][testNumber]);
+    //displayTestResult(testNumber, "A3-IN1", &adc3TestResults[1][testNumber]);
+    //displayTestResult(testNumber, "A3-IN2", &adc3TestResults[2][testNumber]);
+    //displayTestResult(testNumber, "A3-IN3", &adc3TestResults[3][testNumber]);
 }
 
 /********************************************************************************
@@ -669,23 +663,23 @@ void main(void)
 
         for(j = 0; j < TESTS_PER_WINDOW; j++)
         {
-            runSingleTestADC3(j);  // Uses shared arrays, stores to adc0TestResults
+            runSingleTestADC0(j);  // Uses shared arrays, stores to adc0TestResults
             delayMs(20);
 
             runSingleTestADC1(j);  // Uses shared arrays, stores to adc1TestResults
             delayMs(20);
 
-            runSingleTestADC0(j);  // Uses shared arrays, stores to adc2TestResults
+            runSingleTestADC2(j);  // Uses shared arrays, stores to adc2TestResults
             delayMs(20);
 
-            runSingleTestADC2(j);  // Uses shared arrays, stores to adc3TestResults
+            runSingleTestADC3(j);  // Uses shared arrays, stores to adc3TestResults
             delayMs(20);
         }
 
-        calculateWindowAverageADC3(i);
+        calculateWindowAverageADC0(i);
         calculateWindowAverageADC1(i);
         calculateWindowAverageADC2(i);
-        calculateWindowAverageADC0(i);
+        calculateWindowAverageADC3(i);
 
         delayMs(100);
     }
